@@ -1,9 +1,4 @@
 [ {
-  "urlPattern" : "/pages/Login1/**",
-  "permission" : "PermitAll",
-  "roles" : [ ],
-  "httpMethod" : null
-}, {
   "urlPattern" : "/**",
   "permission" : "Authenticated",
   "roles" : null,

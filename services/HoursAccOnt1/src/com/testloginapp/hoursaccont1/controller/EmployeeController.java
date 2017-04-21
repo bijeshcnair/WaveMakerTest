@@ -8,6 +8,10 @@ package com.testloginapp.hoursaccont1.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.TypeMismatchException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +24,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.wavemaker.runtime.data.exception.EntityNotFoundException;
 import com.wavemaker.runtime.data.export.ExportType;
 import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
+import com.wavemaker.runtime.file.model.DownloadResponse;
 import com.wavemaker.runtime.file.model.Downloadable;
+import com.wavemaker.runtime.util.WMMultipartUtils;
+import com.wavemaker.runtime.util.WMRuntimeUtils;
 import com.wavemaker.tools.api.core.annotations.WMAccessVisibility;
 import com.wavemaker.tools.api.core.models.AccessSpecifier;
 import com.wordnik.swagger.annotations.Api;
@@ -64,6 +72,15 @@ public class EmployeeController {
 	    return employee;
 	}
 
+	@ApiOperation(value = "Creates a new Employee instance.This API should be used when the Employee instance has fields that requires multipart data.")
+	@RequestMapping(method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Employee createEmployee(MultipartHttpServletRequest multipartHttpServletRequest) {
+    	Employee employee = WMMultipartUtils.toObject(multipartHttpServletRequest, Employee.class, "HoursAccOnt1"); 
+        LOGGER.debug("Creating a new Employee with information: {}" , employee);
+        return employeeService.create(employee);
+    }
+
 
     @ApiOperation(value = "Returns the Employee instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.GET)
@@ -77,6 +94,21 @@ public class EmployeeController {
         return foundEmployee;
     }
 
+    @ApiOperation(value = "Retrieves content for the given BLOB field in Employee instance" )
+    @RequestMapping(value = "/{id}/content/{fieldName}", method = RequestMethod.GET, produces="application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public DownloadResponse getEmployeeBLOBContent(@PathVariable("id") Integer id, @PathVariable("fieldName") String fieldName, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestParam(value="download", defaultValue = "false") boolean download) {
+
+        LOGGER.debug("Retrieves content for the given BLOB field {} in Employee instance" , fieldName);
+
+        if(!WMRuntimeUtils.isLob(Employee.class, fieldName)) {
+            throw new TypeMismatchException("Given field " + fieldName + " is not a valid BLOB type");
+        }
+        Employee employee = employeeService.getById(id);
+
+        return WMMultipartUtils.buildDownloadResponseForBlob(employee, fieldName, httpServletRequest, download);
+    }
+
     @ApiOperation(value = "Updates the Employee instance associated with the given id.")
     @RequestMapping(value = "/{id:.+}", method = RequestMethod.PUT)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -88,6 +120,20 @@ public class EmployeeController {
         LOGGER.debug("Employee details with id: {}" , employee);
 
         return employee;
+    }
+
+    @ApiOperation(value = "Updates the Employee instance associated with the given id.This API should be used when Employee instance fields that require multipart data.") 
+    @RequestMapping(value = "/{id:.+}", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Employee editEmployee(@PathVariable("id") Integer id, MultipartHttpServletRequest multipartHttpServletRequest) throws EntityNotFoundException {
+        Employee newEmployee = WMMultipartUtils.toObject(multipartHttpServletRequest, Employee.class, "HoursAccOnt1");
+        newEmployee.setEmplId(id);
+
+        Employee oldEmployee = employeeService.getById(id);
+        WMMultipartUtils.updateLobsContent(oldEmployee, newEmployee);
+        LOGGER.debug("Updating Employee with information: {}" , newEmployee);
+
+        return employeeService.update(newEmployee);
     }
 
     @ApiOperation(value = "Deletes the Employee instance associated with the given id.")

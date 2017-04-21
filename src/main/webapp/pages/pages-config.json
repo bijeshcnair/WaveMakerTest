@@ -3,23 +3,19 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
-  "name" : "Emp1",
+  "name" : "Emp2",
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "Employee",
+  "name" : "Employee1",
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "Employeeprofile",
+  "name" : "LogHours",
   "type" : "PAGE",
   "params" : [ ]
 }, {
   "name" : "Login",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
-  "name" : "Login1",
   "type" : "PAGE",
   "params" : [ ]
 }, {

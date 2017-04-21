@@ -37,9 +37,9 @@ public class HoursLogged implements Serializable {
     private LocalDateTime hto;
     private String status;
     private Integer managerId;
+    private Department departmentByDepartment;
     private Employee employeeByEmplId;
     private Employee employeeByManagerId;
-    private Department departmentByDepartment;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,6 +107,20 @@ public class HoursLogged implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`Department`", referencedColumnName = "`DeptID`", insertable = false, updatable = false)
+    public Department getDepartmentByDepartment() {
+        return this.departmentByDepartment;
+    }
+
+    public void setDepartmentByDepartment(Department departmentByDepartment) {
+        if(departmentByDepartment != null) {
+            this.department = departmentByDepartment.getDeptId();
+        }
+
+        this.departmentByDepartment = departmentByDepartment;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`EmplID`", referencedColumnName = "`EmplID`", insertable = false, updatable = false)
     public Employee getEmployeeByEmplId() {
         return this.employeeByEmplId;
@@ -132,20 +146,6 @@ public class HoursLogged implements Serializable {
         }
 
         this.employeeByManagerId = employeeByManagerId;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "`Department`", referencedColumnName = "`DeptID`", insertable = false, updatable = false)
-    public Department getDepartmentByDepartment() {
-        return this.departmentByDepartment;
-    }
-
-    public void setDepartmentByDepartment(Department departmentByDepartment) {
-        if(departmentByDepartment != null) {
-            this.department = departmentByDepartment.getDeptId();
-        }
-
-        this.departmentByDepartment = departmentByDepartment;
     }
 
     @Override
