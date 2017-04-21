@@ -3,6 +3,14 @@
   "type" : "PARTIAL",
   "params" : [ ]
 }, {
+  "name" : "Emp1",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Employee",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "Employeeprofile",
   "type" : "PAGE",
   "params" : [ ]

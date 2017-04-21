@@ -21,6 +21,30 @@
                     <wm-layoutgrid columns="2" name="layoutgrid1">
                         <wm-gridrow name="gridrow1">
                             <wm-gridcolumn columnwidth="6" name="gridcolumn1">
+                                <wm-navbar title="Brand" name="navbar1">
+                                    <wm-nav type="navbar" class="navbar-left" name="nav1">
+                                        <wm-nav-item name="nav_item1">
+                                            <wm-anchor caption="Link 1" name="anchor1"></wm-anchor>
+                                        </wm-nav-item>
+                                        <wm-nav-item name="nav_item2">
+                                            <wm-anchor caption="Link 2" name="anchor2"></wm-anchor>
+                                        </wm-nav-item>
+                                        <wm-nav-item name="nav_item3">
+                                            <wm-anchor caption="Link 3" name="anchor3"></wm-anchor>
+                                        </wm-nav-item>
+                                    </wm-nav>
+                                    <wm-nav type="navbar" class="navbar-right" name="nav2">
+                                        <wm-nav-item name="nav_item4">
+                                            <wm-anchor caption="Link 1" name="anchor4"></wm-anchor>
+                                        </wm-nav-item>
+                                        <wm-nav-item name="nav_item5">
+                                            <wm-anchor caption="Link 2" name="anchor5"></wm-anchor>
+                                        </wm-nav-item>
+                                        <wm-nav-item name="nav_item6">
+                                            <wm-anchor caption="Link 3" name="anchor6"></wm-anchor>
+                                        </wm-nav-item>
+                                    </wm-nav>
+                                </wm-navbar>
                                 <wm-form-field name="name" displayname="Name" required="false" show="true" generator="assigned" primary-key="false" key="name" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="6" name="gridcolumn2">

@@ -15,6 +15,28 @@
     } ],
     "operation" : "toast"
   },
+  "goToPage_Emp1" : {
+    "_id" : "wm-goToPage_Emp1-wm.NavigationVariable-1491885832465",
+    "name" : "goToPage_Emp1",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Emp1",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_Employee" : {
+    "_id" : "wm-goToPage_Employee-wm.NavigationVariable-1491881747800",
+    "name" : "goToPage_Employee",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "Employee",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_Employeeprofile" : {
     "_id" : "wm-goToPage_Employeeprofile-wm.NavigationVariable-1491817147927",
     "name" : "goToPage_Employeeprofile",
