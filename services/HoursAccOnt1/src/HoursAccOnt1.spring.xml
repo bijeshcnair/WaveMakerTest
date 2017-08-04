@@ -12,25 +12,26 @@
         </property>
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
     </bean>
-    <bean id="HoursAccOnt1WMManagedDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" depends-on="systemPropertyInitializer" lazy-init="true"
-          p:driverClass="${HoursAccOnt1.driverClass}"
-          p:jdbcUrl="${HoursAccOnt1.url}"
-          p:user="${HoursAccOnt1.username}"
-          p:password="${HoursAccOnt1.password}"
-          p:maxPoolSize="${HoursAccOnt1.maxPoolSize}"
-          p:minPoolSize="${HoursAccOnt1.minPoolSize}"
-          p:maxIdleTime="600"
-          p:maxStatements="50"
-          p:maxStatementsPerConnection="20"
-          p:checkoutTimeout="30000"
-          p:idleConnectionTestPeriod="300"
-          p:unreturnedConnectionTimeout="300"
-          p:debugUnreturnedConnectionStackTraces="true"
-          p:acquireRetryAttempts="3"
-          p:acquireRetryDelay="1000"
-          p:contextClassLoaderSource="library"
-          p:privilegeSpawnedThreads="true"
-            />
+
+    <bean id="HoursAccOnt1HikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="jdbcUrl" value="${HoursAccOnt1.url}"/>
+        <property name="driverClassName" value="${HoursAccOnt1.driverClass}"/>
+        <property name="username" value="${HoursAccOnt1.username}"/>
+        <property name="password" value="${HoursAccOnt1.password}"/>
+        <property name="maximumPoolSize" value="${HoursAccOnt1.maxPoolSize}"/>
+        <property name="minimumIdle" value="${HoursAccOnt1.minPoolSize}"/>
+        <property name="connectionTimeout" value="30000" />
+        <property name="validationTimeout" value="5000" />
+        <property name="idleTimeout" value="600000" />
+        <property name="maxLifetime" value="1800000" />
+        <property name="initializationFailTimeout" value="-1" />
+        <property name="leakDetectionThreshold" value="120000" />
+        <property name="registerMbeans" value="false" />
+    </bean>
+
+    <bean id="HoursAccOnt1WMManagedDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close" lazy-init="true">
+        <constructor-arg ref="HoursAccOnt1HikariConfig"/>
+    </bean>
 
     <bean id="HoursAccOnt1EntityInterceptor" class="com.wavemaker.runtime.data.interceptors.WMEntityInterceptor"/>
 

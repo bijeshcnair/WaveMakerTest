@@ -41,6 +41,7 @@ Application.$controller("FacebookOAuthController", ["$scope", function ($scope) 
             if ($scope.loginsuccessmessage) {
                 $scope.Variables.loginSuccess.invoke();
             }
+            Utils.triggerFn($scope.onLoginsuccess);
         } else if ($scope.loginmode === LOGIN_MODE.AUTOMATIC) {
             $scope.Variables.OAuthHandlerServiceGetLoginURL.update();
         }

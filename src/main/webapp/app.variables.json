@@ -239,6 +239,17 @@
     "operation" : "gotoPage",
     "pageName" : "Main"
   },
+  "goToPage_TestPage" : {
+    "_id" : "wm-goToPage_TestPage-wm.NavigationVariable-1501833860855",
+    "name" : "goToPage_TestPage",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "TestPage",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "loggedInUser" : {
     "_id" : "wm-loggedInUser-wm.Variable-1491817008187",
     "name" : "loggedInUser",

@@ -20,6 +20,9 @@
   }, {
     "table" : "HoursLogged",
     "schema" : null
+  }, {
+    "table" : "Login",
+    "schema" : null
   } ],
   "schemaFilter" : [ ],
   "impersonateUser" : false,

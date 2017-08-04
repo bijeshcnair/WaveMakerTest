@@ -1,0 +1,80 @@
+<wm-page data-ng-controller="TestPagePageController" pagetitle="Test Page" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-liveform errormessage="" title="Login Info" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.CreateLogin.dataSet" captionalign="left" captionposition="top" name="liveform1">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                            <wm-form-field name="username" displayname="Username" required="false" show="true" generator="assigned" primary-key="false" key="username" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                            widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn2">
+                            <wm-form-field name="password" displayname="Password" required="false" show="true" generator="assigned" primary-key="false" key="password" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                            widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="identity" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+            </wm-liveform>
+            <wm-livelist listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" datafield="All Fields" dataset="bind:Variables.HoursAccOnt1LoginData.dataSet" navigation="On-Demand" name="livelist1">
+                <wm-listtemplate layout="inline" name="listtemplate1">
+                    <wm-container class="media-left" name="container1">
+                        <wm-picture width="32pt" height="32pt" name="Picture" shape="circle" class="media-object"></wm-picture>
+                    </wm-container>
+                    <wm-container class="media-body" name="container2">
+                        <wm-label class="p media-heading" name="Name" caption="bind:Variables.HoursAccOnt1LoginData.dataSet.username" fontunit="em" padding="unset unset unset 1.25em"></wm-label>
+                        <wm-liveform errormessage="" title="" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.HoursAccOnt1LoginData.dataSet" captionalign="left" captionposition="top" formdata="bind:Widgets.livelist1.currentItem"
+                        name="liveform2">
+                            <wm-layoutgrid columns="1" name="layoutgrid2">
+                                <wm-gridrow name="gridrow3">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                                        <wm-form-field name="username" displayname="Username" show="true" primary-key="false" generator="assigned" key="username" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text"
+                                        placeholder="Enter value"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow4">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                                        <wm-form-field name="password" displayname="Password" show="true" primary-key="false" generator="assigned" key="password" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text"
+                                        placeholder="Enter value"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                            <wm-form-action key="custom" display-name="Update" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Update" action="Variables.UpdateLogin.updateRecord();Variables.HoursAccOnt1LoginData.listRecords()"
+                            accessroles="admin,Employee,Manager,user" shortcutkey="" disabled="false" type="button" update-mode="true" position="footer"></wm-form-action>
+                            <wm-form-action key="custom2" display-name="Remove" show="true" class="btn-secondary" iconclass="wi wi-delete" title="Remove" action="Variables.DeleteLogin.deleteRecord()" accessroles="admin,Employee,Manager,user"
+                            shortcutkey="" disabled="false" type="button" update-mode="false" position="footer,header"></wm-form-action>
+                            <wm-form-action key="custom1" display-name="Remove-1" show="true" class="btn-secondary" iconclass="wi wi-delete" title="Remove" action="Variables.DeleteLogin.deleteRecord()" shortcutkey="" disabled="false"
+                            type="button" update-mode="true" position="header"></wm-form-action>
+                        </wm-liveform>
+                    </wm-container>
+                </wm-listtemplate>
+            </wm-livelist>
+            <wm-panel subheading="subheading" iconclass="wi wi-account-circle" autoclose="outsideClick" title="Title" name="panel1">
+                <wm-panel-footer name="panel_footer1">
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label2"></wm-label>
+                </wm-panel-footer>
+                <wm-livelist listclass="list-group" itemclass="list-group-item" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" dataset="bind:Variables.HoursAccOnt1LoginData.dataSet" navigation="Basic" name="livelist2">
+                    <wm-listtemplate layout="inline" name="listtemplate2">
+                        <wm-container class="media-left" name="container3">
+                            <wm-picture width="32pt" height="32pt" name="Picture" shape="circle" class="media-object"></wm-picture>
+                        </wm-container>
+                        <wm-container class="media-body" padding="unset unset unset 1.25em" name="container4">
+                            <wm-label name="Name" class="p media-heading" caption="bind:Variables.HoursAccOnt1LoginData.dataSet.username" fontsize="1.143" fontunit="em"></wm-label>
+                            <wm-label name="JobTitle" caption="bind:Variables.HoursAccOnt1LoginData.dataSet.password" class="p text-muted"></wm-label>
+                        </wm-container>
+                        <wm-container class="media-right media-top" name="container5">
+                            <wm-button class="btn-transparent" iconclass="wi wi-share fa-2x" name="button1"></wm-button>
+                        </wm-container>
+                    </wm-listtemplate>
+                </wm-livelist>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

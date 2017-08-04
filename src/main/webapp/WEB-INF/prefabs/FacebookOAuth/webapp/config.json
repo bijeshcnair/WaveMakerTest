@@ -31,7 +31,8 @@
       ],
       "widget"     : "list",
       "show"       : true,
-      "disabled"   : false
+      "disabled"   : false,
+      "helpText"   : "This property invokes the oAuth authorization on page load if set to auto."
     },
     "login": {
       "type"   : "method",
@@ -80,8 +81,16 @@
       "helpText": "This property will set the text for the toaster after successful authorization",
       "bindable": "in-bound",
       "widget": "string",
+      "value" : "Login Successful!",
       "show": true,
       "disabled": false
+    },
+    "onLoginsuccess" : {
+      "type" : "event",
+      "widget" : "eventlist",
+      "show" : true,
+      "disabled" : false,
+      "helpText" : "This event will be invoked after successful login"
     }
   }
 }
