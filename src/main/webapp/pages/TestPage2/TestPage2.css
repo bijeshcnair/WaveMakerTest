@@ -1,0 +1,12 @@
+.wm-text:focus~label,
+.wm-text:valid~label {
+  top: -24px;
+  color: #00dd22;
+}
+.test-lg{
+      top: -24px !important;
+    color:#00dd22;
+    border-color: #00dd2 !important;
+    
+      background-image: linear-gradient(#9eb234, #cc2b2b), linear-gradient(#e0e0e0, #e0e0e0);
+}
