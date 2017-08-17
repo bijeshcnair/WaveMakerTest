@@ -154,5 +154,34 @@
     "properties" : [ ],
     "relatedTables" : [ ],
     "package" : "com.hrdb.Department"
+  },
+  "myJavaService" : {
+    "_id" : "wm-myJavaService-wm.ServiceVariable-1502980803119",
+    "name" : "myJavaService",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "jrxml",
+      "value" : "data.jrxml",
+      "type" : "string"
+    }, {
+      "target" : "database",
+      "value" : "DEPARTMENT",
+      "type" : "string"
+    } ],
+    "service" : "GenerateReports",
+    "operation" : "generatePdfReport",
+    "operationId" : "GenerateReportsController_generatePdfReport",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "GenerateReports"
   }
 }
