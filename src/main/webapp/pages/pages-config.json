@@ -11,6 +11,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "FileUploadTest",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "HealCare",
   "type" : "PAGE",
   "params" : [ ]

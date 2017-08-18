@@ -198,6 +198,29 @@
     "filterFields" : { },
     "package" : "com.testloginapp.hoursaccont1.Employee"
   },
+  "FileServiceUploadFile" : {
+    "_id" : "wm-FileServiceUploadFile-wm.ServiceVariable-1503057729167",
+    "name" : "FileServiceUploadFile",
+    "owner" : "App",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.testloginapp.fileservice.FileService.FileUploadResponse",
+    "service" : "FileService",
+    "operation" : "uploadFile",
+    "operationId" : "FileController_uploadFile",
+    "operationType" : "post",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "File"
+  },
   "goToPage_Emp2" : {
     "_id" : "wm-goToPage_Emp2-wm.NavigationVariable-1492787056090",
     "name" : "goToPage_Emp2",
@@ -217,6 +240,17 @@
     "dataBinding" : [ ],
     "operation" : "gotoPage",
     "pageName" : "Employee1",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_FileUploadTest" : {
+    "_id" : "wm-goToPage_FileUploadTest-wm.NavigationVariable-1503057158360",
+    "name" : "goToPage_FileUploadTest",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "FileUploadTest",
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
