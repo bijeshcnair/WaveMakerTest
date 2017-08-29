@@ -243,6 +243,17 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_EmployeeReport" : {
+    "_id" : "wm-goToPage_EmployeeReport-wm.NavigationVariable-1504014539811",
+    "name" : "goToPage_EmployeeReport",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "EmployeeReport",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_FileUploadTest" : {
     "_id" : "wm-goToPage_FileUploadTest-wm.NavigationVariable-1503057158360",
     "name" : "goToPage_FileUploadTest",
@@ -306,6 +317,17 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_TestDataTable" : {
+    "_id" : "wm-goToPage_TestDataTable-wm.NavigationVariable-1503654923069",
+    "name" : "goToPage_TestDataTable",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "TestDataTable",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_TestPage" : {
     "_id" : "wm-goToPage_TestPage-wm.NavigationVariable-1501833860855",
     "name" : "goToPage_TestPage",
@@ -326,6 +348,25 @@
     "operation" : "gotoPage",
     "pageName" : "TestPage2",
     "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_TestTableDetails" : {
+    "_id" : "wm-goToPage_TestTableDetails-wm.NavigationVariable-1503655236868",
+    "name" : "goToPage_TestTableDetails",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "TestTableDetails",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "TestTableDetails",
+    "dataSet" : [ {
+      "type" : "integer",
+      "target" : "userID",
+      "value" : "bind:Widgets.grid1.selecteditem.id"
+    } ],
     "pageTransitions" : "none"
   },
   "loggedInUser" : {

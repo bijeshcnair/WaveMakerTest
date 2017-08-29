@@ -1,0 +1,9 @@
+.wm-app .box-login-btn.btn {
+    background-color: rgb(255, 255, 255);
+    color: #464A4F !important;
+    
+}
+.box-login-btn .btn-caption:not(:empty) {
+    border-left: 0.5px solid rgba(255, 255, 255, 0.34);
+    padding-left: 5px;
+}

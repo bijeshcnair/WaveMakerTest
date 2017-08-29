@@ -1,0 +1,249 @@
+<style id="Main.css">
+.wm-app .box-login-btn.btn {
+    background-color: rgb(255, 255, 255);
+    color: #464A4F !important;
+    
+}
+.box-login-btn .btn-caption:not(:empty) {
+    border-left: 0.5px solid rgba(255, 255, 255, 0.34);
+    padding-left: 5px;
+}
+</style>
+<script id="Main.js">
+Application.$controller("BoxOAuthController", ["$scope", "Utils", function($scope, Utils) {
+    "use strict";
+    var LOGIN_MODE = {
+            'AUTOMATIC': "auto"
+        },
+        autoLogin = $scope.loginmode === LOGIN_MODE.AUTOMATIC;
+
+    $scope.isInsideIframe = window.self != window.top;
+    /* 
+     * This function will be invoked when any of this prefab's property is changed
+     * @key: property name
+     * @newVal: new value of the property
+     * @oldVal: old value of the property
+     */
+    function propertyChangeHandler(key, newVal, oldVal) {
+
+            /*
+         switch (key) {
+         case "prop1":
+         // do something with newVal for property 'prop1'
+         break;
+         case "prop2":
+         // do something with newVal for property 'prop2'
+         break;
+         }
+         */
+
+        }
+        /* register the property change handler */
+    $scope.propertyManager.add($scope.propertyManager.ACTIONS.CHANGE, propertyChangeHandler);
+
+    function toggleSignInButton(enable) {
+        var signInBtn = $scope.Widgets.signInButton.$element;
+        if (!enable) {
+            signInBtn.attr('disabled', 'disabled');
+        } else {
+            signInBtn.removeAttr('disabled');
+        }
+    }
+
+    function openWindow(href) {
+        if (!href) {
+            return;
+        }
+        window.open(href, $scope.isInsideIframe ? '_blank' : '_self', "width=600,height=700");
+    }
+
+    function login() {
+        $scope.Widgets.signInButton.$element.click();
+    }
+
+    $scope.onInitPrefab = function() {
+        $scope.login = login;
+    };
+
+    $scope.signInButtonClick = function($event, $isolateScope) {
+        openWindow($scope.loginurl);
+    };
+
+    $scope.OauthcallbackGetAccessTokenonSuccess = function(variable, data) {
+        var callbackParams;
+        if (data) {
+            $scope.accesstoken = data;
+            $scope.Widgets.signInButton.disabled = true;
+            toggleSignInButton(false);
+            if ($scope.loginsuccessmessage) {
+                $scope.Variables.loginSuccess.invoke();
+            }
+            Utils.triggerFn($scope.onLoginsuccess);
+        } else {
+            if ($scope.isInsideIframe) {
+                callbackParams = JSON.stringify({
+                    'WMOAuthState': true
+                });
+            } else {
+                callbackParams = "csrf8888";
+            }
+            $scope.Variables.OauthcallbackGetLoginURL.setInput('state', callbackParams);
+            $scope.Variables.OauthcallbackGetLoginURL.invoke();
+        }
+    };
+
+
+    $scope.OauthcallbackGetLoginURLonSuccess = function(variable, data) {
+        $scope.loginurl = data;
+        toggleSignInButton(!$scope.accesstoken);
+        if (autoLogin && !$scope.accesstoken) {
+            openWindow(data);
+        }
+    };
+
+}]);
+</script>
+<script id="Main.variables.json">
+var _MainPage_Variables_ ={
+  "loginSuccess" : {
+    "_id" : "wm-loginSuccess-wm.NotificationVariable-1487227160343",
+    "name" : "loginSuccess",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "content",
+      "value" : "inline",
+      "type" : "string"
+    }, {
+      "target" : "text",
+      "value" : "bind:loginsuccessmessage",
+      "type" : "string"
+    }, {
+      "target" : "duration",
+      "value" : "3000",
+      "type" : "number"
+    }, {
+      "target" : "class",
+      "value" : "Success",
+      "type" : "string"
+    }, {
+      "target" : "toasterPosition",
+      "value" : "bottom right",
+      "type" : "string"
+    } ],
+    "operation" : "toast"
+  },
+  "OauthcallbackCallback" : {
+    "_id" : "wm-OauthcallbackCallback-wm.ServiceVariable-1470228432451",
+    "name" : "OauthcallbackCallback",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "BoxService",
+    "operation" : "callback",
+    "operationId" : "BoxController_callback",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false
+  },
+  "OauthcallbackGetAccessToken" : {
+    "_id" : "wm-OauthcallbackGetAccessToken-wm.ServiceVariable-1470228017485",
+    "name" : "OauthcallbackGetAccessToken",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "BoxService",
+    "operation" : "getAccessToken",
+    "operationId" : "BoxController_getAccessToken",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "onSuccess" : "OauthcallbackGetAccessTokenonSuccess($event, $scope)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Box"
+  },
+  "OauthcallbackGetCallbackURL" : {
+    "_id" : "wm-OauthcallbackGetCallbackURL-wm.ServiceVariable-1470228459769",
+    "name" : "OauthcallbackGetCallbackURL",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "BoxService",
+    "operation" : "getCallbackURL",
+    "operationId" : "BoxController_getCallbackURL",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Box"
+  },
+  "OauthcallbackGetLoginURL" : {
+    "_id" : "wm-OauthcallbackGetLoginURL-wm.ServiceVariable-1470228479471",
+    "name" : "OauthcallbackGetLoginURL",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "string",
+    "service" : "BoxService",
+    "operation" : "getLoginURL",
+    "operationId" : "BoxController_getLoginURL",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "designMaxResults" : 10,
+    "onSuccess" : "OauthcallbackGetLoginURLonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Box"
+  },
+  "supportedLocale" : {
+    "_id" : "wm-wm.Variable1402640443182",
+    "name" : "supportedLocale",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataSet" : {
+      "en" : "English"
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}
+</script>
+<script id="Main.html" type="text/ng-template">
+<wm-page data-ng-controller="BoxOAuthController" name="page1">
+    <wm-content name="content1">
+        <wm-button on-click="signInButtonClick($event, $scope)" width="{{width}}" height="{{height}}" ng-class="buttonclass" caption="bind:buttoncaption" type="button" name="signInButton" show="true" class="btn box-login-btn" iconurl="https://box-api-navigator.com/img/box_cyan_small.png"
+        backgroundcolor="#ffffff" iconwidth="40px" color="#000000" borderstyle="ridge"></wm-button>
+    </wm-content>
+</wm-page>
+</script>

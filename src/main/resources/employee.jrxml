@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.0.final using JasperReports Library version 6.0.0  -->
+<!-- 2015-02-03T12:26:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05b3e21d-595e-438a-8e03-9ee24bb1e5c5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="test"/>
+	<queryString language="SQL">
+		<![CDATA[select * from employee;]]>
+	</queryString>
+	<field name="id" class="java.math.BigDecimal">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="fname" class="java.lang.String">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="lname" class="java.lang.String">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="salary" class="java.lang.Integer">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<field name="country" class="java.lang.String">
+		<fieldDescription>
+			<![CDATA[]]>
+		</fieldDescription>
+	</field>
+	<variable name="count" class="java.lang.Number" incrementType="Group" incrementGroup="country" calculation="Count">
+		<variableExpression>
+			<![CDATA[$V{count}]]>
+		</variableExpression>
+	</variable>
+	<group name="salary">
+		<groupExpression>
+			<![CDATA[$F{salary}]]>
+		</groupExpression>
+	</group>
+	<group name="gender">
+		<groupExpression>
+			<![CDATA[$F{gender}]]>
+		</groupExpression>
+	</group>
+	<group name="country">
+		<groupExpression>
+			<![CDATA[$F{country}]]>
+		</groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="12" width="160" height="30" uuid="97b0e428-aaa0-4c21-bb83-360bc555e43e"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text>
+					<![CDATA[Employee List]]>
+				</text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="170" y="0" width="100" height="30" backcolor="#9BCFC3" uuid="73058e69-8c61-4154-8731-80dc50c7d469"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text>
+					<![CDATA[Name]]>
+				</text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Opaque" x="60" y="0" width="110" height="30" backcolor="#9BCFC3" uuid="d45fe6b7-559a-4edb-b099-d73c5d1aa77e">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text>
+					<![CDATA[       ID]]>
+				</text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="270" y="0" width="100" height="30" backcolor="#9BCFC3" uuid="fdaeb2ef-2308-4dc9-bc3a-885faf26fe66"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text>
+					<![CDATA[Email]]>
+				</text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="110" height="30" forecolor="#000000" backcolor="#9BCFC3" uuid="8d894150-030a-44c6-9459-793eda6e9aec"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text>
+					<![CDATA[Country]]>
+				</text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="90" y="4" width="81" height="20" uuid="4d7ab3df-f525-4306-9179-51ee32c7aae5"/>
+				<textFieldExpression>
+					<![CDATA[$F{id}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="2" width="90" height="20" uuid="9135ccdf-7d84-4226-817d-2ee29dd42faa"/>
+				<textFieldExpression>
+					<![CDATA[$F{fname}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="1" width="90" height="19" uuid="0a549f73-cc89-4d89-b46f-90a9884c19ff"/>
+				<textFieldExpression>
+					<![CDATA[$F{email}]]>
+				</textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="4" width="80" height="20" uuid="d67c115c-7848-4a14-b91c-fd07ff4e184f"/>
+				<textFieldExpression>
+					<![CDATA[$F{country}]]>
+				</textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="429" splitType="Stretch">
+			<!--	<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="30" y="90" width="510" height="170" uuid="67049a59-84dd-4a78-a09e-61b3de51af0f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["EMPLOYEE-SALARY"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{fname}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{salary}]]></valueExpression>
+						<labelExpression><![CDATA[$F{fname}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>-->
+		</band>
+	</summary>
+</jasperReport>

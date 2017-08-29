@@ -11,6 +11,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "EmployeeReport",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "FileUploadTest",
   "type" : "PAGE",
   "params" : [ ]
@@ -31,6 +35,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "TestDataTable",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "TestPage",
   "type" : "PAGE",
   "params" : [ ]
@@ -38,6 +46,13 @@
   "name" : "TestPage2",
   "type" : "PAGE",
   "params" : [ ]
+}, {
+  "name" : "TestTableDetails",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "userID",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "footer",
   "type" : "FOOTER",

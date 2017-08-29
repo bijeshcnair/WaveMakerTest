@@ -1,0 +1,93 @@
+{
+  "readTESTDB" : {
+    "_id" : "wm-readTESTDB-wm.LiveVariable-1503670728818",
+    "name" : "readTESTDB",
+    "owner" : "Page",
+    "category" : "wm.LiveVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.userID",
+      "type" : "number"
+    } ],
+    "operation" : "read",
+    "dataSet" : [ ],
+    "type" : "Table1",
+    "isList" : false,
+    "saveInPhonegap" : false,
+    "maxResults" : 1,
+    "designMaxResults" : 10,
+    "onBeforeUpdate" : "readTESTDBonBeforeUpdate($event, $scope)",
+    "inFlightBehavior" : "executeLast",
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "transformationRequired" : false,
+    "liveSource" : "TestDB",
+    "ignoreCase" : true,
+    "matchMode" : "start",
+    "orderBy" : "id asc",
+    "propertiesMap" : {
+      "columns" : [ {
+        "fieldName" : "id",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "ID",
+        "isPrimaryKey" : true,
+        "notNull" : true,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "identity",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "name",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
+        "columnName" : "Name",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 255,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
+      }, {
+        "fieldName" : "path",
+        "type" : "text",
+        "fullyQualifiedType" : "text",
+        "columnName" : "Path",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 2147483647,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "scale" : 0
+      } ],
+      "entityName" : "Table1",
+      "fullyQualifiedName" : "com.testloginapp.testdb.Table1",
+      "tableType" : "TABLE",
+      "primaryFields" : [ "id" ]
+    },
+    "tableName" : "TABLE1",
+    "tableType" : "TABLE",
+    "properties" : [ ],
+    "relatedTables" : [ ],
+    "filterFields" : { },
+    "package" : "com.testloginapp.testdb.Table1"
+  },
+  "staticVariable1" : {
+    "_id" : "wm-staticVariable1-wm.Variable-1503670527317",
+    "name" : "staticVariable1",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  }
+}

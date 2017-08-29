@@ -1,0 +1,100 @@
+{
+  "BoxController_callback" : {
+    "id" : "BoxController_callback",
+    "service" : "BoxService",
+    "controller" : "BoxController",
+    "operationType" : "object",
+    "type" : "object",
+    "wmServiceOperationInfo" : {
+      "name" : "callback",
+      "methodType" : "get",
+      "relativePath" : "/box/callback",
+      "directPath" : "/box/callback",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : null,
+      "consumes" : null,
+      "authorization" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      }
+    }
+  },
+  "BoxController_getAccessToken" : {
+    "id" : "BoxController_getAccessToken",
+    "service" : "BoxService",
+    "controller" : "BoxController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getAccessToken",
+      "methodType" : "get",
+      "relativePath" : "/box/accessToken",
+      "directPath" : "/box/accessToken",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : [ "application/json" ],
+      "consumes" : null,
+      "authorization" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      }
+    }
+  },
+  "BoxController_getCallbackURL" : {
+    "id" : "BoxController_getCallbackURL",
+    "service" : "BoxService",
+    "controller" : "BoxController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getCallbackURL",
+      "methodType" : "get",
+      "relativePath" : "/box/callbackURL",
+      "directPath" : "/box/callbackURL",
+      "httpMethod" : "get",
+      "parameters" : [ ],
+      "definitions" : { },
+      "produces" : [ "application/json" ],
+      "consumes" : null,
+      "authorization" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      }
+    }
+  },
+  "BoxController_getLoginURL" : {
+    "id" : "BoxController_getLoginURL",
+    "service" : "BoxService",
+    "controller" : "BoxController",
+    "operationType" : "string",
+    "type" : "string",
+    "wmServiceOperationInfo" : {
+      "name" : "getLoginURL",
+      "methodType" : "get",
+      "relativePath" : "/box/loginURl",
+      "directPath" : "/box/loginURl",
+      "httpMethod" : "get",
+      "parameters" : [ {
+        "name" : "state",
+        "parameterType" : "query",
+        "type" : "java.lang.String",
+        "required" : false,
+        "contentType" : null
+      } ],
+      "definitions" : { },
+      "produces" : [ "application/json" ],
+      "consumes" : null,
+      "authorization" : null,
+      "proxySettings" : {
+        "web" : true,
+        "mobile" : true
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "EmployeeServiceVariable" : {
+    "_id" : "wm-EmployeeServiceVariable-wm.ServiceVariable-1504014590992",
+    "name" : "EmployeeServiceVariable",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "jrxml",
+      "value" : "employee.jrxml",
+      "type" : "string"
+    }, {
+      "target" : "database",
+      "value" : "employee",
+      "type" : "string"
+    } ],
+    "service" : "EmployeeService",
+    "operation" : "generatePdfReport",
+    "operationId" : "EmployeeController_generatePdfReport",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Employee"
+  }
+}

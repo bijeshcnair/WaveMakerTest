@@ -1,0 +1,33 @@
+<wm-page data-ng-controller="TestDataTablePageController" pagetitle="Test Data Table" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-livegrid formlayout="dialog" name="livegrid1">
+                <wm-grid gridfirstrowselect="true" editmode="dialog" title="Table1 List" dataset="bind:Variables.TestDBTable1Data.dataSet" navigation="Basic" name="grid2" on-click="Variables.goToPage_TestTableDetails.invoke()">
+                    <wm-grid-column binding="id" caption="Id" type="integer" primary-key="true" generator="identity" readonly="true" edit-widget-type="number" show="true"></wm-grid-column>
+                    <wm-grid-column binding="name" caption="Name" type="string" generator="assigned" edit-widget-type="text" show="true" readonly="false"></wm-grid-column>
+                    <wm-grid-column binding="path" caption="Path" type="text" generator="assigned" edit-widget-type="text" show="true" readonly="false"></wm-grid-column>
+                    <wm-grid-column binding="rowOperations" caption="Actions" type="custom" width="120px" readonly="true" sortable="false" searchable="false" show="true"></wm-grid-column>
+                    <wm-grid-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="Variables.goToPage_TestTableDetails.invoke()" shortcutkey="" disabled="false"></wm-grid-action>
+                    <wm-grid-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-grid-row-action>
+                    <wm-grid-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-grid-row-action>
+                </wm-grid>
+                <wm-liveform errormessage="" title="Table1 Info" formlayout="dialog" iconclass="wi wi-edit" dataset="bind:Variables.TestDBTable1Data.dataSet" captionalign="left" captionposition="top" name="liveform1">
+                    <wm-layoutgrid columns="2" name="layoutgrid1">
+                        <wm-gridrow name="gridrow1">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn1">
+                                <wm-form-field name="name" displayname="Name" show="true" primary-key="false" generator="assigned" key="name" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn2">
+                                <wm-form-field name="path" displayname="Path" show="true" primary-key="false" generator="assigned" key="path" type="text" readonly="false" required="false" widget="text" maxchars="2147483647" inputtype="text" placeholder="Enter value"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                    <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                    <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
+                    <wm-form-action key="new" class="form-new btn-success" iconclass="wi wi-plus" action="Variables.goToPage_TestTableDetails.invoke()" display-name="New" show="true" type="button" update-mode="false" shortcutkey=""></wm-form-action>
+                </wm-liveform>
+            </wm-livegrid>
+        </wm-page-content>
+    </wm-content>
+</wm-page>
